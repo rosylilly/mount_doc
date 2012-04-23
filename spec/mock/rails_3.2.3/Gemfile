@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gemspec path: File.expand_path('../../../../', __FILE__)
+
 gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
