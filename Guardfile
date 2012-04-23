@@ -1,6 +1,11 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+guard 'bundler' do
+  watch('Gemfile')
+  watch(/^.+\.gemspec/)
+end
+
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch(%r{spec/mock/rails_.*?/config/application.rb})
   watch(%r{spec/mock/rails_.*?/config/environment.rb})
