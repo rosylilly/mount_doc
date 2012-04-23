@@ -5,3 +5,5 @@ module MountDoc
 
   autoload :Config, "mount_doc/config"
 end
+
+require 'mount_doc/rails/generators'
