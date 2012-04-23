@@ -1,15 +1,26 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'spork'
 require 'rails'
 
-ENV['RAILS_VERSION'] ||= Rails.version
+if RUBY_PLATFORM.downcase.include?("darwin")
+  require 'growl'
+end
 
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path(
-  "../mock/rails_#{ENV['RAILS_VERSION']}/config/environment",
-  __FILE__)
-require 'rspec/rails'
-require 'rspec/autorun'
+Spork.prefork do
+  ENV['RAILS_VERSION'] ||= Rails.version
 
-RSpec.configure do | config |
+  ENV['RAILS_ENV'] ||= 'test'
+  require File.expand_path(
+    "../mock/rails_#{ENV['RAILS_VERSION']}/config/environment",
+    __FILE__)
+  require 'rspec/rails'
+  require 'rspec/autorun'
+
+  RSpec.configure do | config |
+  end
+end
+
+Spork.each_run do
+  Rails.application.reload_routes!
 end

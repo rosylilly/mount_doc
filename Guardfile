@@ -1,7 +1,18 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'rspec', version: 2, cli: '--color -f doc --fail-fast' do
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  watch(%r{spec/mock/rails_.*?/config/application.rb})
+  watch(%r{spec/mock/rails_.*?/config/environment.rb})
+  watch(%r{^spec/mock/rails_.*?/config/environments/.+\.rb$})
+  watch(%r{^spec/mock/rails_.*?/config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb') { :rspec }
+  watch(%r{features/support/}) { :cucumber }
+end
+
+guard 'rspec', version: 2, cli: '--color -f doc --drb --fail-fast' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

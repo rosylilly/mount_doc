@@ -8,4 +8,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'growl', require: false
 end
