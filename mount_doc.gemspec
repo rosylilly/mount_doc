@@ -14,4 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "mount_doc"
   gem.require_paths = ["lib"]
   gem.version       = MountDoc::VERSION
+
+  gem.add_dependency('rails', '~> 3.2')
+  gem.add_dependency('github-markdown')
 end

@@ -11,4 +11,5 @@ group :development, :test do
   gem 'guard-spork'
   gem 'guard-bundler'
   gem 'growl', require: false
+  gem 'rb-readline'
 end
