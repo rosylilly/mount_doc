@@ -22,5 +22,12 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  Rails.application.reload_routes!
+  if Spork.using_spork?
+    Rails.application.reload_routes!
+
+    ActiveSupport::DescendantsTracker.clear
+    ActiveSupport::Dependencies.clear
+
+    ActiveRecord::Base.instantiate_observers
+  end
 end

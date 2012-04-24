@@ -1,5 +1,5 @@
-require 'mount_doc'
+# -*- coding: utf-8 -*-
+require 'mount_doc/rails/generators'
 
 class MountDoc::Generators::InitializeGenerator < Rails::Generators::Base
-  desc "test"
-end
+end if Rails.const_defined?(:Generators)
