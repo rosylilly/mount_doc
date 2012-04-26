@@ -1,2 +1,6 @@
-MountDoc::Rails::Engine.routes.draw do
+MountDoc::Engine.routes.draw do
+  match 'controllers/:id' => 'mount_doc#controller_doc'
+  match 'models/:id' => 'mount_doc#model_doc'
+  match 'files/*id' => 'mount_doc#file_doc'
+  match '/' => 'mount_doc#index', :as => 'mount_doc_root'
 end

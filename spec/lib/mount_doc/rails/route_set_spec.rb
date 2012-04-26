@@ -9,8 +9,8 @@ describe ActionDispatch::Routing::RouteSet do
   }
 
   it "auto mounted MountDoc" do
-    route = Rails.application.routes.named_routes.get(:mount_doc_rails_engine)
+    route = Rails.application.routes.named_routes.get(:mount_doc)
     route.should_not be_nil
-    route.app.should == MountDoc::Rails::Engine
+    route.app.should == MountDoc::Engine
   end
 end

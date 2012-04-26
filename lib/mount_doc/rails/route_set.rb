@@ -7,7 +7,7 @@ class ActionDispatch::Routing::RouteSet
 
     begin
       self.eval_block(lambda{
-        mount MountDoc::Rails::Engine => MountDoc::Config.auto_mount_path
+        mount MountDoc::Engine => MountDoc::Config.auto_mount_path
       }) if MountDoc::Config.auto_mount? && self.named_routes.get(:mount_doc_rails_engine).nil?
 
       true

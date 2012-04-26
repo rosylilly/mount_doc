@@ -17,4 +17,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('rails', '~> 3.2')
   gem.add_dependency('github-markdown')
+  gem.add_dependency('slim')
 end

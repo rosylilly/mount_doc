@@ -4,6 +4,7 @@ source :rubygems
 gemspec
 
 group :development, :test do
+  gem 'test-unit', require: 'test/unit'
   gem 'rails'
   gem 'rspec-rails'
   gem 'sqlite3'

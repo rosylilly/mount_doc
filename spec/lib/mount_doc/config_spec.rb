@@ -55,6 +55,12 @@ describe MountDoc::Config do
     }
   end
 
+  describe :doc_file_path do
+    subject{ MountDoc::Config.doc_file_path }
+    
+    it("default: 'doc'"){ should == 'doc' }
+  end
+
   describe :defaults! do
     subject{ MountDoc::Config }
 

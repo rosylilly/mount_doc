@@ -1,0 +1,44 @@
+doctype 5
+html
+  head
+    meta charset="UTF-8"
+    title
+      = @page_title
+      | - MountDoc
+    = stylesheet_link_tag :mount_doc
+  body
+
+    article#main
+      = yield
+
+    aside#side-index
+      div#search
+        input#search-box type='text'
+
+      - if mount_doc_config.visible_components.include?(:files)
+        div#files-index
+          h6 Files
+          = files
+
+      - if mount_doc_config.visible_components.include?(:urls)
+        div#urls-index
+          h6 URLs
+
+          ul
+            - for route in routes
+              li
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'models_doc', :id => 'unko')}")
+                  span.method= route[:method]
+                  = route[:path]
+
+      - if mount_doc_config.visible_components.include?(:controllers)
+        div#controllers-index
+          h6 Controllers
+
+          = controllers
+
+      - if mount_doc_config.visible_components.include?(:models)
+        div#models-index
+          h6 Models
+
+          = models

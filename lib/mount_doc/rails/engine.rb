@@ -1,9 +1,10 @@
 require 'mount_doc'
 
-class MountDoc::Rails::Engine < ::Rails::Engine
+class MountDoc::Engine < ::Rails::Engine
+  isolate_namespace MountDoc
+
   config.mount_doc = MountDoc::Config
 
   initializer "config.mount" do
-    p :test
   end
 end

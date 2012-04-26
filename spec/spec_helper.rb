@@ -18,6 +18,7 @@ Spork.prefork do
   require 'rspec/autorun'
 
   RSpec.configure do | config |
+    config.include ActiveSupport::Testing::Assertions
   end
 end
 

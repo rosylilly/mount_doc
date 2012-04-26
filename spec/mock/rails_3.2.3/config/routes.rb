@@ -1,6 +1,7 @@
 Rails323::Application.routes.draw do
   resources :users
 
+  mount MountDoc::Engine => '/doc'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
