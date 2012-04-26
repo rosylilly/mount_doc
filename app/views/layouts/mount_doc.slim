@@ -31,7 +31,7 @@ html
           ul
             - for route in routes
               li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => route[:controller], :anchor => "act-#{route[:action]}")}")
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'action_doc', :ctrl_id => route[:controller].gsub('/', '::'), :id => route[:action])}")
                   span.method= route[:method]
                   = route[:path]
 
@@ -42,7 +42,7 @@ html
           ul
             - for controller in controllers
               li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => controller)}")
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => controller.gsub('/', '::'))}")
                   = controller.camelize
 
       - if mount_doc_config.visible_components.include?(:models)
@@ -52,5 +52,5 @@ html
           ul
             - for model in models
               li
-                a(href="#{url_for(:model => 'mount_doc', :action => 'model_doc', :id => model)}")
+                a(href="#{url_for(:model => 'mount_doc', :action => 'model_doc', :id => model.gsub('/', '::'))}")
                   = model.camelize

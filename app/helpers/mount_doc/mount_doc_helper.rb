@@ -43,7 +43,7 @@ module MountDoc
     def controllers
       @controllers ||= begin
         Dir[File.join(::Rails.application.root, 'app/controllers/**/*_controller.rb')].map { |cn|
-          File.basename(cn, '_controller.rb')
+          cn.sub(%r{_controller\.rb$}, '').sub(%r{^#{::Rails.application.root}/app/controllers/}, '')
         }
       end
     end
@@ -51,7 +51,7 @@ module MountDoc
     def models
       @models ||= begin
         Dir[File.join(::Rails.application.root, 'app/models/**/*.rb')].map { |cn|
-          File.basename(cn, '.rb')
+          cn.sub(%r{\.rb$}, '').sub(%r{^#{::Rails.application.root}/app/models/}, '')
         }
       end
     end
