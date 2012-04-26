@@ -1,4 +1,6 @@
 Rails323::Application.routes.draw do
+  namespace :api do resources :documents end
+
   resources :users
 
   mount MountDoc::Engine => '/doc'

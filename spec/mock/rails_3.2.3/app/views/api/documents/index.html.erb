@@ -1,0 +1,21 @@
+<h1>Listing api_documents</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @api_documents.each do |api_document| %>
+  <tr>
+    <td><%= link_to 'Show', api_document %></td>
+    <td><%= link_to 'Edit', edit_api_document_path(api_document) %></td>
+    <td><%= link_to 'Destroy', api_document, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Document', new_api_document_path %>
