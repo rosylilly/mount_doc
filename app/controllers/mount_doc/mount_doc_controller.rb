@@ -4,6 +4,8 @@ require 'github/markup'
 
 module MountDoc
   class MountDocController < ApplicationController
+    include MountDocHelper
+
     layout 'mount_doc'
     
     def index
@@ -15,7 +17,15 @@ module MountDoc
     end
 
     def controller_doc
+      @controller_name = params[:id]
 
+      file_name = File.join(::Rails.root, 'app/controllers', "#{@controller_name.gsub('::', '/')}_controller.rb")
+      unless File.exists?(file_name)
+        not_found
+        return
+      end
+
+      @document = MountDoc::Document.new(:controller, @controller_name).doc_object
     end
 
     def model_doc
@@ -31,9 +41,15 @@ module MountDoc
         @page_title = File.basename(file_name)
         render text: GitHub::Markup.render(file_name), layout: true
       else
-        render status: 404, nothing: true
+        not_found
+        return
       end
 
+    end
+
+    private
+    def not_found
+      render :not_found, status: 404
     end
   end
 end

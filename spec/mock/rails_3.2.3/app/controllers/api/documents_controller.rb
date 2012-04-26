@@ -1,3 +1,4 @@
+# Document Test
 class Api::DocumentsController < ApplicationController
   # GET /api/documents
   # GET /api/documents.json
