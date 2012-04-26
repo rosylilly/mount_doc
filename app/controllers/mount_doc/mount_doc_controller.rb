@@ -26,6 +26,7 @@ module MountDoc
       end
 
       @document = MountDoc::Document.new(:controller, @controller_name).doc_object
+      @page_title = @controller_name.gsub('::', '/').camelize
     end
 
     def action_doc
@@ -45,6 +46,8 @@ module MountDoc
         not_found
         return
       end
+
+      @page_title = @controller_name.gsub('::', '/').camelize + '#' + @action_name
     end
 
     def model_doc

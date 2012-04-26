@@ -22,6 +22,14 @@ ul.urls
     - for param in @document.tags('param')
       li ( #{param.types.join(', ')} ) <code><b>#{param.name}</b></code> &mdash; <small>#{param.text}</small>
 
+- if @document.tags('example').size > 0
+  h2 Example
+
+  - for example in @document.tags('example')
+    h3= example.name
+    pre
+      code= example.text
+
 - if @document.tags('response').size > 0
   h2 Response
 
