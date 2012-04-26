@@ -33,8 +33,7 @@ module MountDoc::Config
   Components = [
     :files,
     :urls,
-    :controllers,
-    :models
+    :controllers
   ]
   mattr_reader :visible_components
   def visible_components=(components)

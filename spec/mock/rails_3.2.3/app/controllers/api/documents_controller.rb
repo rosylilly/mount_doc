@@ -6,6 +6,9 @@ class Api::DocumentsController < ApplicationController
   #
   # @version 1.0
   # @param [optional,int] test パラメータのテスト
+  # @param [Hash] hash オプション値のテスト
+  # @option hash [String] :title タイトル
+  # @option hash [int] :num 数字
   # @todo メモ書き
   #   なんかいろいろ書式ためしとかないとまずいなー
   # @response とりあえずのサンプル

@@ -20,7 +20,12 @@ ul.urls
 
   ul.params
     - for param in @document.tags('param')
-      li ( #{param.types.join(', ')} ) <code><b>#{param.name}</b></code> &mdash; <small>#{param.text}</small>
+      li
+        | ( #{param.types.map(&:downcase).join(', ')} ) <code><b>#{param.name}</b></code> &mdash; <small>#{param.text}</small>
+        - if (options = @document.tags('option').select{|opt| opt.name == param.name }).size > 0
+          ul
+            - for option in options
+              li ( #{option.pair.types.map(&:downcase).join(', ')} ) <code><b>#{option.pair.name}</b></code> &mdash; <small>#{option.pair.text}</small>
 
 - if @document.tags('example').size > 0
   h2 Example
