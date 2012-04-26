@@ -1,5 +1,6 @@
 body {
   padding-left: 400px;
+  font-size: 14px;
 }
 
 #main {
@@ -45,7 +46,7 @@ body {
   text-decoration: none;
 }
 
-#side-index span.method {
+span.method {
   display: inline-block;
   margin-left: -3.5em;
   margin-right: 0.5em;
@@ -66,4 +67,51 @@ body {
     border-radius: 4px;
     width: 358px;
   }
+}
+
+h2 {
+  font-size: 120%;
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 100%;
+}
+
+ul.urls {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+
+  li {
+    padding: 0;
+    list-style: none outside;
+
+    span.method {
+      margin-left: 0;
+      text-align: center;
+      background-color: #e8ecef;
+      width: 4em;
+      border: 1px solid gray;
+      border-radius: 3px;
+    }
+  }
+}
+
+p.deprecated {
+  margin: 0;
+  font-size: 80%;
+  color: #c9171e;
+  font-weight: bold;
+}
+p.deprecated + * {
+  margin-top: 0;
+}
+
+pre {
+  padding: 0.5em;
+  background-color: #e8ecef;
+  border-radius: 4px;
+  overflow: auto;
 }

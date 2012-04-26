@@ -1,0 +1,37 @@
+
+- if @document.tags('deprecated').size > 0
+  p.deprecated DEPRECATED: #{@document.tags('deprecated').first.text}
+
+h1
+  = @controller_name.gsub('::', '/').camelize + '#' +@action_name
+  - if @document.tags('version').size > 0
+    |  (v#{@document.tags('version').first.text})
+
+ul.urls
+  - for route in routes_for(@controller_name.gsub('::', '/'), @action_name)
+    li
+      span.method= route[:method]
+      = route[:path]
+
+== markup @document.docstring.to_s
+
+- if @document.tags('param').size > 0
+  h2 Params
+
+  ul.params
+    - for param in @document.tags('param')
+      li ( #{param.types.join(', ')} ) <code><b>#{param.name}</b></code> &mdash; <small>#{param.text}</small>
+
+- if @document.tags('response').size > 0
+  h2 Response
+
+  - for response in @document.tags('response')
+    h3= response.name
+    pre
+      code= response.text
+
+- if @document.tags('todo').size > 0
+  h2 ToDo
+
+  - for todo in @document.tags('todo')
+    == markup todo.text

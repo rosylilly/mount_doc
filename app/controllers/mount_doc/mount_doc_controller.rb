@@ -28,6 +28,25 @@ module MountDoc
       @document = MountDoc::Document.new(:controller, @controller_name).doc_object
     end
 
+    def action_doc
+      @controller_name = params[:ctrl_id]
+      @action_name = params[:id]
+
+      file_name = File.join(::Rails.root, 'app/controllers', "#{@controller_name.gsub('::', '/')}_controller.rb")
+      unless File.exists?(file_name)
+        not_found
+        return
+      end
+
+      @controller_document = MountDoc::Document.new(:controller, @controller_name).doc_object
+      @document = @controller_document.meths.select{|meth| meth.name.to_s == @action_name.to_s }.first
+
+      unless @document
+        not_found
+        return
+      end
+    end
+
     def model_doc
 
     end

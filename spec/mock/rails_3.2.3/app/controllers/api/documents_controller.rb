@@ -4,7 +4,24 @@ class Api::DocumentsController < ApplicationController
   #
   # 書式はRdocだよー
   #
-  # @param [int] test パラメータのテスト
+  # @version 1.0
+  # @param [optional,int] test パラメータのテスト
+  # @todo メモ書き
+  #   なんかいろいろ書式ためしとかないとまずいなー
+  # @response とりあえずのサンプル
+  #   <xml>
+  #     <document>
+  #       <title>Sample Document</title>
+  #       <content> ... </content>
+  #       <views>256</views>
+  #     </document>
+  #   </xml>
+  # @deprecated こいつは今後一切メンテする気がない！
+  #
+  # @overload /api/documents.json
+  #   テスト！！！
+  #   @param [int] test これは！
+  # @overload /api/documents.html
   def index
     @api_documents = Api::Document.all
 
