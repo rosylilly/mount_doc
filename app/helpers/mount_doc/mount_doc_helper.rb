@@ -2,8 +2,8 @@ require 'mount_doc'
 
 module MountDoc
   module MountDocHelper
-    include ::Rails.application.routes.url_helpers
-    include ::Rails.application.routes.mounted_helpers
+    extend ::Rails.application.routes.url_helpers
+    extend ::Rails.application.routes.mounted_helpers
 
     def mount_doc_config
       MountDoc::Config

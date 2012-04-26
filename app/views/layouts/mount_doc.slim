@@ -4,7 +4,7 @@ html
     meta charset="UTF-8"
     title
       = @page_title
-      | - MountDoc
+      |  - MountDoc
     = stylesheet_link_tag :mount_doc
   body
 
@@ -18,7 +18,11 @@ html
       - if mount_doc_config.visible_components.include?(:files)
         div#files-index
           h6 Files
-          = files
+
+          ul
+            - for file in files
+              li
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'file_doc', :id => file)}")= file
 
       - if mount_doc_config.visible_components.include?(:urls)
         div#urls-index
@@ -27,7 +31,7 @@ html
           ul
             - for route in routes
               li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'models_doc', :id => 'unko')}")
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => route[:controller], :anchor => "act-#{route[:action]}")}")
                   span.method= route[:method]
                   = route[:path]
 
@@ -35,10 +39,18 @@ html
         div#controllers-index
           h6 Controllers
 
-          = controllers
+          ul
+            - for controller in controllers
+              li
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => controller)}")
+                  = controller.camelize
 
       - if mount_doc_config.visible_components.include?(:models)
         div#models-index
           h6 Models
 
-          = models
+          ul
+            - for model in models
+              li
+                a(href="#{url_for(:model => 'mount_doc', :action => 'model_doc', :id => model)}")
+                  = model.camelize

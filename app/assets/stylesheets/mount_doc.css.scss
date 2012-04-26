@@ -29,6 +29,31 @@ body {
   }
 }
 
+#side-index ul {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+#side-index li {
+  list-style: none outside;
+}
+
+#side-index a {
+  display: block;
+  margin-left: 3.5em;
+  text-decoration: none;
+}
+
+#side-index span.method {
+  display: inline-block;
+  margin-left: -3.5em;
+  margin-right: 0.5em;
+  font-family: Ricty, Inconsolata, Menlo, Courier, monospace;
+  width: 3em;
+  text-align: right;
+}
+
 #search {
   input {
     display: inline-block;
