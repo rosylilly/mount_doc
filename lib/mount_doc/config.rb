@@ -49,13 +49,20 @@ module MountDoc::Config
   end
   module_function :doc_file_path=
 
+  mattr_reader :markup
+  def markup=(path)
+    @@markup = path.to_s
+  end
+  module_function :markup=
+
   DefaultSettings = {
     auto_mount: false,
     auto_mount_path: '/doc',
     visible_private_methods: false,
     visible_protected_methods: false,
     visible_components: Components,
-    doc_file_path: 'doc'
+    doc_file_path: 'doc',
+    markup: :rdoc
   }
   def defaults!
     DefaultSettings.each_pair do | name, val |

@@ -1,7 +1,10 @@
 # Document Test
 class Api::DocumentsController < ApplicationController
-  # GET /api/documents
-  # GET /api/documents.json
+  # ちゃんとドキュメントを書いて反映されるかのテスト
+  #
+  # 書式はRdocだよー
+  #
+  # @param [int] test パラメータのテスト
   def index
     @api_documents = Api::Document.all
 

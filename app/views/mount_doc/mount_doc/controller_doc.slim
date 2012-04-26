@@ -1,1 +1,12 @@
-h1 うんｋ
+h1= @controller_name.gsub('::', '/').camelize
+
+== markup @document.docstring.to_s
+
+- for action in actions(@document)
+  h2= action[:method].name
+  ul.urls
+    - for route in action[:routes]
+      li
+        span.method= route[:method]
+        = route[:path]
+  == markup action[:method].docstring.summary.sub(/\.\Z/, '')

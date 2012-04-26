@@ -40,6 +40,14 @@ module MountDoc
       }
     end
 
+    def routes_for(controller, action)
+      puts "#{controller}##{action}"
+      _routes = routes.dup.select{ |route|
+        route[:controller].to_s.to_sym == controller.to_s.to_sym && route[:action].to_s.to_sym == action.to_s.to_sym
+      }
+      _routes
+    end
+
     def controllers
       @controllers ||= begin
         Dir[File.join(::Rails.application.root, 'app/controllers/**/*_controller.rb')].map { |cn|
@@ -54,6 +62,35 @@ module MountDoc
           cn.sub(%r{\.rb$}, '').sub(%r{^#{::Rails.application.root}/app/models/}, '')
         }
       end
+    end
+
+    def actions(class_doc)
+      class_doc.meths.select{ |meth|
+        meth.scope == :instance
+      }.map{ |meth|
+        { method: meth,
+          routes: routes_for(@controller_name.gsub('::', '/'), meth.name)
+        }
+      }.select { |hash|
+        hash[:routes].size > 0
+      }
+    end
+
+    def markup(text)
+      case MountDoc::Config.markup
+      when :markdown
+        markdown(text)
+      else
+        rdoc(text)
+      end
+    end
+
+    def markdown(text)
+      GitHub::Markup.render('tmp.markdown', text)
+    end
+
+    def rdoc(text)
+      RDoc::Markup::ToHtml.new.convert(text)
     end
   end
 end

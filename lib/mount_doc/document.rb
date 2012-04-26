@@ -1,6 +1,8 @@
 require 'mount_doc'
 require 'yard'
 
+YARD::Tags::Library.define_tag "Response", :response, :with_title_and_text
+
 class MountDoc::Document
   attr_reader :type, :name, :doc_object
 
