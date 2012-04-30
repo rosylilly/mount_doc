@@ -8,6 +8,7 @@ InstalledFiles
 _yardoc
 coverage
 doc/
+!spec/mock/rails*/doc/
 lib/bundler/man
 pkg
 rdoc
