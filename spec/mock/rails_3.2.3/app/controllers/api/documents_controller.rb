@@ -61,8 +61,14 @@ class Api::DocumentsController < ApplicationController
     @api_document = Api::Document.find(params[:id])
   end
 
-  # POST /api/documents
-  # POST /api/documents.json
+  # 新しいドキュメントを生成します。
+  #
+  # @param [Hash] doc ドキュメントオブジェクト
+  # @option doc [String] title ドキュメントのタイトル
+  # @option doc [String] body ドキュメントの本文
+  #
+  # @response 生成に成功した時
+  #   {"status": "ok", "doc_id": 12}
   def create
     @api_document = Api::Document.new(params[:api_document])
 
