@@ -4,9 +4,9 @@ require File.expand_path('../lib/mount_doc/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Sho Kusano"]
   gem.email         = ["rosylilly@aduca.org"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Supporting Build APIs on Rails}
+  gem.summary       = %q{Railsで書かれたアクションにコメントを書くと、動的にドキュメントを生成し、その結果をRailsアプリにマウントする}
+  gem.homepage      = "https://github.com/rosylilly/mount_doc"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
