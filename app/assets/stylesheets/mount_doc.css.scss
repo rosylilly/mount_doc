@@ -110,12 +110,39 @@ p.deprecated + * {
 }
 
 pre {
+  position: relative;
   padding: 0.5em;
   background-color: #e8ecef;
   border-radius: 4px;
   overflow: auto;
+
+  .type {
+    display: block;
+    padding: 5px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0 4px 0 4px;
+    color: white;
+  }
 }
 
 ul ul {
   padding-left: 1em;
+}
+
+.line-numbers {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding-right: 0.3em;
+  width: 2em;
+  text-align: right;
+  border-right: 3px solid #999;
+
+  a {
+    color: #666;
+    text-decoration: none;
+  }
 }

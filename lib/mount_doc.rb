@@ -6,5 +6,6 @@ module MountDoc
   autoload :Document, "mount_doc/document"
 end
 
+require 'mount_doc/string_patch'
 require 'mount_doc/rails'
 require 'mount_doc/rails/generators'

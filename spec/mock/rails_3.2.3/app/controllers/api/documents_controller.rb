@@ -11,7 +11,7 @@ class Api::DocumentsController < ApplicationController
   # @option hash [int] :num 数字
   # @todo メモ書き
   #   なんかいろいろ書式ためしとかないとまずいなー
-  # @response とりあえずのサンプル
+  # @response XML
   #   <xml>
   #     <document>
   #       <title>Sample Document</title>
@@ -19,6 +19,14 @@ class Api::DocumentsController < ApplicationController
   #       <views>256</views>
   #     </document>
   #   </xml>
+  # @response json
+  #   {
+  #     "document": {
+  #       "title": "Sample Document",
+  #       "content": " ... ",
+  #       "views": 256
+  #     }
+  #   }
   # @deprecated こいつは今後一切メンテする気がない！
   #
   # @overload /api/documents.json
