@@ -39,12 +39,19 @@ ul.urls
   h2 Response
 
   - for response in @document.tags('response')
-    h3= response.name
     pre
-      code= response.text
+      span.type= response.name.to_s.upcase
+      code== syntaxhighlight response.name, response.text
 
 - if @document.tags('todo').size > 0
   h2 ToDo
 
   - for todo in @document.tags('todo')
     == markup todo.text
+
+h2 Code
+
+p
+  code= @document.file.sub(Rails.root.to_s, '')
+pre
+  code== syntaxhighlight :ruby, @document.source

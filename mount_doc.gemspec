@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('github-markup', '~> 0.7')
   gem.add_dependency('slim', '~> 1.2')
   gem.add_dependency('yard', '~> 0.8')
+  gem.add_dependency('coderay', '~> 1.0')
 end

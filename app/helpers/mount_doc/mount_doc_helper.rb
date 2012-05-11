@@ -1,4 +1,5 @@
 require 'mount_doc'
+require 'coderay'
 
 module MountDoc
   module MountDocHelper
@@ -91,6 +92,13 @@ module MountDoc
 
     def rdoc(text)
       RDoc::Markup::ToHtml.new.convert(text)
+    end
+
+    def syntaxhighlight(lang, text)
+      CodeRay.scan(text, lang.to_s.downcase.to_sym).html({
+        css: :style,
+        line_numbers: :inline
+      })
     end
   end
 end
