@@ -17,7 +17,7 @@ module MountDoc
       @files ||= Dir[File.join(doc_dir, '**/*')].reject { |fn|
         File.directory?(fn)
       }.map { |fn|
-        fn.sub(%r{^#{doc_dir}/},'')
+        fn.sub(%r{^#{doc_dir}/},'').force_encoding('utf-8')
       }
     end
 

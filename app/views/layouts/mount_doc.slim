@@ -4,12 +4,12 @@ html
     meta charset="UTF-8"
     title
       = @page_title
-      |  - MountDoc
+      |  - † MountDoc †
     = stylesheet_link_tag :mount_doc
   body
 
     article#main
-      = yield
+      = yield.force_encoding('utf-8')
 
     aside#side-index
 
@@ -20,7 +20,8 @@ html
           ul
             - for file in files
               li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'file_doc', :id => file)}")= file
+                a(href="#{url_for(:controller => 'mount_doc', :action => 'file_doc', :id => file)}")
+                  = file
 
       - if mount_doc_config.visible_components.include?(:urls)
         div#urls-index
