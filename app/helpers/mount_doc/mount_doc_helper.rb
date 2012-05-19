@@ -42,7 +42,6 @@ module MountDoc
     end
 
     def routes_for(controller, action)
-      puts "#{controller}##{action}"
       _routes = routes.dup.select{ |route|
         route[:controller].to_s.to_sym == controller.to_s.to_sym && route[:action].to_s.to_sym == action.to_s.to_sym
       }
