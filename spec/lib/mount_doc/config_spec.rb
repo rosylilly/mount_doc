@@ -3,9 +3,9 @@ require 'spec_helper'
 describe MountDoc::Config do
   describe :auto_mount do
     subject{ MountDoc::Config.auto_mount? }
-    it("default: false"){ should be_false }
+    it("default: false") { should be_false }
 
-    it("writable boolean"){
+    it("writable boolean") {
       MountDoc::Config.auto_mount = 1
       should be_true
     }
@@ -57,17 +57,27 @@ describe MountDoc::Config do
 
   describe :doc_file_path do
     subject{ MountDoc::Config.doc_file_path }
-    
+
     it("default: 'doc'"){ should == 'doc' }
   end
 
   describe :defaults! do
     subject{ MountDoc::Config }
 
-    it("set default"){ 
+    it("set default"){
       subject.visible_protected_methods = true
       subject.defaults!
       subject.visible_protected_methods.should be_false
     }
+  end
+
+  describe :cool_config do
+    it "change config" do
+      lambda{
+        MountDoc.config do |conf|
+          conf.visible_components = [:files]
+        end
+      }.should change(MountDoc::Config, :visible_components).to([:files])
+    end
   end
 end
