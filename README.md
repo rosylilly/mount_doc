@@ -1,5 +1,7 @@
 # MountDoc
 
+[![Build Status](https://secure.travis-ci.org/[rosylilly]/[mount_doc].png)](http://travis-ci.org/[rosylilly]/[mount_doc])
+
 Railsアプリケーション組み込み型ドキュメント生成ツール
 
 ## Configure
