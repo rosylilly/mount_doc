@@ -20,4 +20,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency('slim', '~> 1.2')
   gem.add_dependency('yard', '~> 0.8')
   gem.add_dependency('coderay', '~> 1.0')
+
+  gem.add_development_dependency('rspec-rails')
+  gem.add_development_dependency('rails', '3.2.3')
+  gem.add_development_dependency('sqlite3')
+  gem.add_development_dependency('sass-rails', '~> 3.2.3')
+  gem.add_development_dependency('coffee-rails', '~> 3.2.1')
+  gem.add_development_dependency('uglifier', '>= 1.0.3')
+  gem.add_development_dependency('jquery-rails')
 end
