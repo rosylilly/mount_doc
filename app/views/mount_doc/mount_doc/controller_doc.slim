@@ -6,9 +6,10 @@ h1= @controller_name.gsub('::', '/').camelize
   h2
     a href="#{url_for(controller: 'mount_doc', action: 'action_doc', ctrl_id: @controller_name, id: action[:method].name)}"
       = action[:method].name
-  ul.urls
+  ul.urls.unstyled
     - for route in action[:routes]
       li
-        span.method= route[:method]
+        span.label.label-info= route[:method]
+        | &nbsp;
         = route[:path]
   == markup action[:method].docstring.summary.sub(/\.\Z/, '')

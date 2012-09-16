@@ -1,148 +1,35 @@
+//= require bootstrap.min
+
+
 body {
-  padding-left: 400px;
-  font-size: 14px;
-}
-
-#main {
-  padding: 20px 30px;
-}
-
-#side-index {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  width: 400px;
-  height: 100%;
-  background-color: #e8ecef;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  overflow-y: scroll;
-}
-
-#side-index > div {
-  padding: 0 20px;
-  margin: 20px 0;
-
-  h6 {
-    text-align: center;
-    font-size: 15px;
-  }
-}
-
-#side-index ul {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-}
-
-#side-index li {
-  list-style: none outside;
-}
-
-#side-index a {
-  display: block;
-  margin-left: 3.5em;
-  text-decoration: none;
-}
-
-span.method {
-  display: inline-block;
-  margin-left: -3.5em;
-  margin-right: 0.5em;
-  font-family: Ricty, Inconsolata, Menlo, Courier, monospace;
-  width: 3em;
-  text-align: right;
-}
-
-#search {
-  input {
-    display: inline-block;
-    border: none;
-    line-height: 1.5;
-    font-size: 13px;
-    margin: 0;
-    padding: 3px 5px;
-    border: 1px solid #9ea1a3;
-    border-radius: 4px;
-    width: 358px;
-  }
-}
-
-h2 {
-  font-size: 120%;
-  margin-top: 2em;
-  margin-bottom: 0;
-}
-
-h3 {
-  font-size: 100%;
-}
-
-ul.urls {
-  margin: 0;
-  padding: 0;
-  font-size: 13px;
-
-  li {
-    padding: 0;
-    list-style: none outside;
-
-    span.method {
-      margin-left: 0;
-      text-align: center;
-      background-color: #e8ecef;
-      width: 4em;
-      border: 1px solid gray;
-      border-radius: 3px;
-    }
-  }
-}
-
-p.deprecated {
-  margin: 0;
-  font-size: 80%;
-  color: #c9171e;
-  font-weight: bold;
-}
-p.deprecated + * {
-  margin-top: 0;
+  padding: 2em 0;
 }
 
 pre {
   position: relative;
-  padding: 0.5em;
-  background-color: #e8ecef;
-  border-radius: 4px;
-  overflow: auto;
-
-  .type {
+  span.type {
     display: block;
-    padding: 5px 10px;
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 12px;
-    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2px 5px;
+    font-size: 80%;
+    font-family: monospace;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     border-radius: 0 4px 0 4px;
-    color: white;
+    background-color: #ccc;
+    color: #333;
   }
-}
 
-ul ul {
-  padding-left: 1em;
-}
-
-.line-numbers {
-  display: inline-block;
-  margin-right: 0.5em;
-  padding-right: 0.3em;
-  width: 2em;
-  text-align: right;
-  border-right: 3px solid #999;
-
-  a {
-    color: #666;
-    text-decoration: none;
+  code {
+    .line-numbers {
+      display: inline-block;
+      padding-right: 0.5em;
+      margin-right: 0.5em;
+      width: 3em;
+      border-right: 1px solid #ccc;
+      text-align: right;
+    }
   }
 }

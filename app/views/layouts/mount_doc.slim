@@ -1,55 +1,57 @@
 doctype 5
 html
   head
-    meta charset="UTF-8"
+    meta charset="utf-8"
     title
       = @page_title
-      |  - † MountDoc †
+      |  - MountDoc
     = stylesheet_link_tag :mount_doc
   body
 
-    article#main
-      = yield.force_encoding('utf-8')
+    .container
+      .navbar
+        .navbar-inner
+          a.brand href="#{url_for(:controller => 'mount_doc', :action => 'index')}" MountDoc
 
-    aside#side-index
+      .row
+        aside#side-index.span4
 
-      - if mount_doc_config.visible_components.include?(:files)
-        div#files-index
-          h6 Files
+          ul.nav.nav-list.well
+            li
+              a href="#{url_for(:controller => 'mount_doc', :action => 'index')}" HOME
+            - if mount_doc_config.visible_components.include?(:files)
+              li.nav-header Files
 
-          ul
-            - for file in files
-              li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'file_doc', :id => file)}")
-                  = file
+              - for file in files
+                li
+                  a(href="#{url_for(:controller => 'mount_doc', :action => 'file_doc', :id => file)}")
+                    = file
 
-      - if mount_doc_config.visible_components.include?(:urls)
-        div#urls-index
-          h6 URLs
+            - if mount_doc_config.visible_components.include?(:urls)
+              li.nav-header URLs
 
-          ul
-            - for route in routes
-              li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'action_doc', :ctrl_id => route[:controller].gsub('/', '::'), :id => route[:action])}")
-                  span.method= route[:method]
-                  = route[:path]
+              - for route in routes
+                li
+                  a(href="#{url_for(:controller => 'mount_doc', :action => 'action_doc', :ctrl_id => route[:controller].gsub('/', '::'), :id => route[:action])}")
+                    span.label.label-info= route[:method]
+                    | &nbsp;
+                    = route[:path]
 
-      - if mount_doc_config.visible_components.include?(:controllers)
-        div#controllers-index
-          h6 Controllers
+            - if mount_doc_config.visible_components.include?(:controllers)
+              li.nav-header Controllers
 
-          ul
-            - for controller in controllers
-              li
-                a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => controller.gsub('/', '::'))}")
-                  = controller.camelize
+              - for controller in controllers
+                li
+                  a(href="#{url_for(:controller => 'mount_doc', :action => 'controller_doc', :id => controller.gsub('/', '::'))}")
+                    = controller.camelize
 
-      - if mount_doc_config.visible_components.include?(:models)
-        div#models-index
-          h6 Models
+            - if mount_doc_config.visible_components.include?(:models)
+              li.nav-header Models
 
-          ul
-            - for model in models
-              li
-                a(href="#{url_for(:model => 'mount_doc', :action => 'model_doc', :id => model.gsub('/', '::'))}")
-                  = model.camelize
+              - for model in models
+                li
+                  a(href="#{url_for(:model => 'mount_doc', :action => 'model_doc', :id => model.gsub('/', '::'))}")
+                    = model.camelize
+
+        article#main.span8
+          = yield.force_encoding('utf-8')
