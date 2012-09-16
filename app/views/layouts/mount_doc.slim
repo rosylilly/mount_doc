@@ -16,7 +16,9 @@ html
       .row
         aside#side-index.span4
 
-          ul.nav.nav-list
+          ul.nav.nav-list.well
+            li
+              a href="#{url_for(:controller => 'mount_doc', :action => 'index')}" HOME
             - if mount_doc_config.visible_components.include?(:files)
               li.nav-header Files
 
