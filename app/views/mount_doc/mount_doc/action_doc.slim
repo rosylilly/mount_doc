@@ -1,16 +1,18 @@
 
 - if @document.tags('deprecated').size > 0
-  p.deprecated DEPRECATED: #{@document.tags('deprecated').first.text}
+  .alert.alert-error
+    | <strong>Deprecated:</strong> #{@document.tags('deprecated').first.text}
 
 h1
   = @controller_name.gsub('::', '/').camelize + '#' +@action_name
   - if @document.tags('version').size > 0
     |  (v#{@document.tags('version').first.text})
 
-ul.urls
+ul.urls.unstyled
   - for route in routes_for(@controller_name.gsub('::', '/'), @action_name)
     li
-      span.method= route[:method]
+      span.label.label-info= route[:method]
+      | &nbsp;
       = route[:path]
 
 == markup @document.docstring.to_s
@@ -21,11 +23,22 @@ ul.urls
   ul.params
     - for param in @document.tags('param')
       li
-        | ( #{param.types.map(&:downcase).join(', ')} ) <code><b>#{param.name}</b></code> &mdash; <small>#{param.text}</small>
+        strong= param.name
+        | &nbsp;
+        small
+          em ( #{param.types.map(&:downcase).join(', ')} )&nbsp;
+        | &mdash;
+        small= param.text
         - if (options = @document.tags('option').select{|opt| opt.name == param.name }).size > 0
           ul
             - for option in options
-              li ( #{option.pair.types.map(&:downcase).join(', ')} ) <code><b>#{option.pair.name}</b></code> &mdash; <small>#{option.pair.text}</small>
+              li
+                strong= option.pair.name
+                | &nbsp;
+                small
+                  em ( #{param.types.map(&:downcase).join(', ')} )&nbsp;
+                | &mdash;
+                small= option.pair.text
 
 - if @document.tags('example').size > 0
   h2 Example
